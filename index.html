@@ -1,186 +1,466 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Tênis</title>
+    <title>BikeZone</title>
+
     <style>
+        :root {
+            --cor-primaria: #ACC8E5;
+            --cor-secundaria: #000000;
+            --cor-contraste: #ffffff;
+            --cor-fundo: #F7F2D4;
+            --cor-artigo: #fffdf0;
+            --fonte-texto: Arial, sans-serif;
+        }
+
+        .tema-escuro {
+            --cor-primaria: #26384a;
+            --cor-secundaria: #f1f1f1;
+            --cor-contraste: #ffffff;
+            --cor-fundo: #181818;
+            --cor-artigo: #292929;
+            --fonte-texto: Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: rgb(255, 255, 255);
+            background-color: var(--cor-fundo);
+            color: var(--cor-secundaria);
+            font-family: var(--fonte-texto);
+            max-width: 100vw;
             margin: 0;
             padding: 20px 0;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header {
-            background-color: #ffc000;
-            color: #000000;
+            background-color: var(--cor-primaria);
+            color: var(--cor-secundaria);
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             padding: 20px 16px;
-            border: 5px solid rgb(0, 0, 0);
+            border: 5px solid gray;
             border-radius: 12px 12px 0 0;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         header p {
-            color: #000000;
+            color: var(--cor-secundaria);
         }
 
         main {
-            background-color: #f7f2d4;
-            color: #000000;
+            background-color: var(--cor-fundo);
+            color: var(--cor-secundaria);
             max-width: 800px;
             margin: 0 auto;
             padding: 16px;
-            border: 5px solid rgb(0, 0, 0);
+            border: 5px solid gray;
             border-top: none;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         article {
             display: flex;
+            align-items: flex-start;
             gap: 18px;
-            background-color: #ffa832;
+            background-color: var(--cor-artigo);
+            color: var(--cor-secundaria);
             margin-bottom: 18px;
             padding: 18px;
             border-radius: 10px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        article h2 {
-            color: #000000;
+        article h2,
+        article h3,
+        article p {
+            color: var(--cor-secundaria);
+        }
+
+        article p {
+            line-height: 1.6;
         }
 
         img {
-            width: 100px;
-            height: 100px;
+            width: 120px;
+            height: 120px;
             object-fit: cover;
-
+            border-radius: 8px;
         }
 
         .artigo-autor {
             font-weight: bold;
-            color: #000000;
+            color: var(--cor-secundaria);
         }
 
         button {
-            background-color: #ACC8E5;
+            background-color: var(--cor-primaria);
+            color: var(--cor-secundaria);
             border: 2px solid gray;
             border-radius: 8px;
             padding: 7px 12px;
             cursor: pointer;
             font-size: 15px;
+            margin: 4px 2px;
         }
 
         button:hover {
-            background-color: #91b5d8;
+            opacity: 0.8;
+        }
+
+        .botao-tema {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 55px;
+            height: 55px;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #3b647e;
+            border-radius: 50%;
+            background-color: #073b59;
+            color: white;
+            font-size: 27px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .botao-tema:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+
+        @media (max-width: 600px) {
+            header,
+            main {
+                width: auto;
+                margin: 0 10px;
+            }
+
+            article {
+                flex-direction: column;
+            }
+
+            img {
+                width: 100%;
+                height: 180px;
+            }
+
+            .botao-tema {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+            }
         }
     </style>
 </head>
 
 <body>
+
     <header>
-        <h1> MUNDO TÊNIS</h1>
-        <p> Vou compartilhar conhecimentos tênis e calçados</p>
+        <h1>BIKEZONE</h1>
+        <p>Vou compartilhar conhecimentos sobre peças de bikes e bicicletas.</p>
     </header>
+
+    <button
+        class="botao-tema"
+        id="botao-tema"
+        type="button"
+        title="Ativar tema escuro"
+        aria-label="Ativar tema escuro">
+        🌓
+    </button>
+
     <main>
         <article>
             <img src="Gemini_Generated_Image_.png"
-                alt="Logotipo redondo para a página Mundo Tênis com fundo em estilo grafite urbano nas cores laranja e preto. No centro, destaca-se um tênis Nike Air Max Plus TN preto com detalhes em degradê amarelo e dourado. Na parte superior, está escrito o nome Mundo Tênis e o subtítulo A Cultura do Sneaker. À direita, aparece o logotipo amarelo clássico da linha TN Air.">
+                 alt="Logotipo BikeZone com uma bicicleta">
+
             <div>
                 <h2>Meu primeiro post</h2>
-                <p class="artigo-autor">Por: Cleiton da Batata Doce</p>
-                <p> Boas-vindas ao meu novo blog! Aqui vou compartilhar meus conhecimentos sobre o mundo dos Tênis.</p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
+                <p class="artigo-autor">Por: Vitor Fontes Landin</p>
+
+                <p>
+                    Boas-vindas ao meu novo blog! Aqui vou compartilhar
+                    meus conhecimentos sobre o mundo das bikes, suas peças,
+                    manutenção e cuidados necessários para pedalar com segurança.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
             </div>
         </article>
+
         <article>
             <div>
-                <h2>Vamos conhecer o que significa um tenis </h2>
-                <p class="artigo-autor"></p>
-                <p>
-                <h2></h2>
+                <h2>Vamos conhecer as peças das bikes</h2>
+                <p class="artigo-autor">Conhecendo os componentes da bicicleta</p>
 
-                Como dizia Kyan: "Um tênis de mil, vale muito mais que mil pode valer uma vida."
-                isso siginifica que valorizamos o que vestimos e oque compramos 
+                <p>
+                    Você sabe para que serve cada peça da sua bicicleta?
+                    Cada componente possui uma função importante para que
+                    a bike funcione corretamente.
                 </p>
-                <p>
-                    
-                   <h2><strong>NIKE:</strong></h2>  <img src="c6c61d29f6083b921d5a866ad70c6d79.jpg" alt=""> A nike comecou no mundo dos tênis em 1964, porém, so foi adiquirir o nome nike em 1971, o primeiro lançado foi o nike Cortez em 1966, uns dos tenis que mais marcaram foi o Air max 95 neon, que foi o tênis ultilizado pela seleção brasileira em 2002 
-                </p> 
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                  
-                    <h2><strong>ADIDAS:</strong></h2> <img src="images.png" alt=""> Nasceu oficialmente em 18 de agosto de 1949, mas sua história começou nos anos 1920 na Alemanha, fruto de uma parceria e de uma grande rivalidade entre dois irmãos, o primeiro tenis lançado foi o Adidas Samba, lançado originalmente em 1950, um dos tênis que foi mais marcante foi o adidas Superstar 
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                    
-                    <h2><strong>PUMA:</strong></h2> <img src="puma-logo-cover.png" alt=""> A Puma SE nasceu em 1948 na cidade de Herzogenaurach, na Alemanha, após uma forte briga entre os irmãos Rudolf e Adolf Dassler, O tênis mais famoso e icônico da Puma é o Puma Suede Classic, lançado originalmente em 1968.
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                    
-                    <h2><strong>ASICS:</strong></h2> <img src="images (1).png" alt=""> Nasceu em 1º de setembro de 1949, em Kobe, no Japão, quando o ex-militar Kihachiro Onitsuka fundou a Onitsuka Co. com o objetivo de reerguere inspirar a juventude japonesa pós-Segunda Guerra Mundial por meio do esporte, um dos principais tênis dessa marca e o asisc NYC-GEL
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                   
-                   <h2><strong> QIX</strong></h2>  <img src="images.jpeg" alt=""> A Qix é uma das marcas de calçados e streetwear mais tradicionais do skate brasileiro, fundada no início dos anos 90 no Rio Grande do Sul, um dos principais tênis dessa marca e o Qix chorão lado b 
-                </p> 
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                    
-                    <h2><strong> HOCKS:</strong></h2>  <img src="images (2).png" alt=""> A Hocks nasceu em 2002, em Porto Alegre, fundada por skatistas incluindo o sócio-fundador Cristiano Senra, o principal tênis da marce o o Hocks puff
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                    
-                    <h2><strong>ÖUS:</strong></h2> <img src="images (3).png" alt=""> A Öus é uma marca brasileira de calçados e streetwear voltada para o skate e a cultura urbana, fundada em 25 de agosto de 2008 em Curitiba (PR) pelos irmãos e skatistas Rafael e Bruno Narciso, o tênis mais famoso e o öus Imigrante
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-                <p>
-                    
-                   <h2><strong>VANS:</strong></h2> <img src="c25e9fa037682975fb34b16501c170f9.jpg" alt=""> A Vans foi fundada em 16 de março de 1966 pelos irmãos Paul Van Doren e Jim Van Doren, junto com os sócios Gordon Lee e Serge Delia, na cidade de Anaheim, na Califórnia, essa marca e uma das mais usadas, principalmentre o  Old Skool
-                </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
 
-                <h3> Curiosidade</h3>
                 <p>
-                    Todas essas marcas tem uma pegada mais de Skatista ou esportiva que foram adaptadas para o estilo streetwear, ou sportlife.
+                    <strong>Câmbio:</strong> permite trocar as marchas,
+                    deixando a pedalada mais fácil ou mais pesada.
                 </p>
-                <button>❤️<span>0</span></button>
-                <button>👍<span>0</span></button>
-            
-<script>
-    const botoes = document.querySelectorAll("button");
 
-    botoes.forEach(function (botao) {
-        let curtiu = false;
-        botao.addEventListener("click", botaoClicado);
-        function botaoClicado() {
-            console.log("fui clicado");
-            let texto = botao.querySelector("span");
-            if (curtiu === false) {
-                texto.textContent++;
-                curtiu = true;
-            } else {
-                texto.textContent--;
-                curtiu = false;
-            }
+                <p>
+                    <strong>Corrente:</strong> transmite a força dos pedais
+                    para a roda traseira.
+                </p>
+
+                <p>
+                    <strong>Freios:</strong> ajudam a diminuir a velocidade
+                    e parar a bicicleta com segurança.
+                </p>
+
+                <p>
+                    <strong>Pedais:</strong> recebem a força dos pés e ajudam
+                    a movimentar a bicicleta.
+                </p>
+
+                <h3>Curiosidade</h3>
+
+                <p>
+                    Todas essas peças trabalham juntas. Por isso, realizar
+                    a manutenção da bicicleta é essencial para um pedal seguro.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+
+        <article>
+            <div>
+                <h2>A importância da manutenção</h2>
+                <p class="artigo-autor">Cuide bem da sua bike!</p>
+
+                <p>
+                    Fazer a manutenção da bicicleta é importante para mantê-la
+                    segura e funcionando corretamente. Verificar os freios,
+                    pneus, corrente e marchas ajuda a evitar problemas durante
+                    os passeios.
+                </p>
+
+                <p>
+                    A manutenção também aumenta a durabilidade das peças,
+                    melhora o desempenho da bicicleta e pode evitar gastos
+                    maiores com consertos.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+
+        <article>
+            <img src="images02.jpeg" alt="Peças e câmbio de bicicleta">
+
+            <div>
+                <h2>Cuidados com o câmbio da sua bike</h2>
+                <p class="artigo-autor">Conselhos para o bom funcionamento</p>
+
+                <p>
+                    Para cuidar do câmbio, limpe a corrente, o cassete e as
+                    roldanas com produtos adequados. Depois, aplique lubrificante
+                    específico na corrente e retire o excesso com um pano.
+                </p>
+
+                <p>
+                    Verifique também se as marchas estão trocando corretamente.
+                    Se houver barulhos ou dificuldade nas trocas, pode ser
+                    necessário ajustar o câmbio.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+
+        <article>
+            <img src="images05.jpeg" alt="Sistema de freios de bicicleta">
+
+            <div>
+                <h2>Cuidados com os freios da sua bike</h2>
+                <p class="artigo-autor">Pedale com segurança</p>
+
+                <p>
+                    Verifique regularmente o estado das pastilhas ou sapatas
+                    de freio. Confira também se os cabos estão bem ajustados
+                    e se os manetes respondem corretamente.
+                </p>
+
+                <p>
+                    Mantenha os componentes limpos e faça um teste dos freios
+                    em baixa velocidade antes de sair para pedalar.
+                    Se perceber falhas, procure uma oficina especializada.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+
+        <article>
+            <img src="images04.jpeg" alt="Corrente de bicicleta">
+
+            <div>
+                <h2>Cuidados com a corrente da sua bike</h2>
+                <p class="artigo-autor">Mantenha a transmissão em bom estado</p>
+
+                <p>
+                    Limpe a corrente para remover poeira e resíduos.
+                    Depois de secá-la, aplique lubrificante próprio para
+                    bicicletas e retire o excesso com um pano.
+                </p>
+
+                <p>
+                    Uma corrente limpa e lubrificada ajuda nas trocas de
+                    marchas e reduz o desgaste dos componentes da transmissão.
+                    Verifique também se ela apresenta sinais de desgaste.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+
+        <article>
+            <img src="images02.jpeg" alt="Pedais de bicicleta">
+
+            <div>
+                <h2>Cuidados com os pedais da sua bike</h2>
+                <p class="artigo-autor">Mais conforto durante a pedalada</p>
+
+                <p>
+                    Limpe os pedais com um pano ou uma escova para remover
+                    a sujeira. Confira se estão bem fixados no pedivela
+                    e se giram sem apresentar ruídos ou folgas.
+                </p>
+
+                <p>
+                    Se perceber dificuldade de movimento, desgaste ou folga
+                    excessiva, procure uma oficina para verificar os
+                    rolamentos e a fixação dos pedais.
+                </p>
+
+                <button class="botao-curtida" type="button">
+                    ❤️ <span>0</span>
+                </button>
+
+                <button class="botao-curtida" type="button">
+                    👍 <span>0</span>
+                </button>
+            </div>
+        </article>
+    </main>
+
+    <script>
+        const botoesCurtida = document.querySelectorAll(".botao-curtida");
+
+        botoesCurtida.forEach(function (botao) {
+            let curtiu = false;
+
+            botao.addEventListener("click", function () {
+                const contador = botao.querySelector("span");
+
+                if (!curtiu) {
+                    contador.textContent =
+                        Number(contador.textContent) + 1;
+
+                    curtiu = true;
+                    botao.style.borderColor = "#2e8b57";
+                } else {
+                    contador.textContent =
+                        Number(contador.textContent) - 1;
+
+                    curtiu = false;
+                    botao.style.borderColor = "gray";
+                }
+            });
+        });
+
+       
+        const botaoTema = document.getElementById("botao-tema");
+        const corpo = document.body;
+
+        const temaSalvo = localStorage.getItem("tema-bikezone");
+
+        if (temaSalvo === "escuro") {
+            corpo.classList.add("tema-escuro");
+            botaoTema.textContent = "🌗";
+            botaoTema.title = "Ativar tema claro";
+            botaoTema.setAttribute("aria-label", "Ativar tema claro");
         }
 
-    })
+        botaoTema.addEventListener("click", function () {
+            corpo.classList.toggle("tema-escuro");
 
+            const temaEscuroAtivo =
+                corpo.classList.contains("tema-escuro");
 
-</script>
+            if (temaEscuroAtivo) {
+                botaoTema.textContent = "🌗";
+                botaoTema.title = "Ativar tema claro";
+                botaoTema.setAttribute("aria-label", "Ativar tema claro");
 
+                localStorage.setItem("tema-bikezone", "escuro");
+            } else {
+                botaoTema.textContent = "🌓";
+                botaoTema.title = "Ativar tema escuro";
+                botaoTema.setAttribute("aria-label", "Ativar tema escuro");
+
+                localStorage.setItem("tema-bikezone", "claro");
+            }
+        });
+    </script>
+
+</body>
 </html>
